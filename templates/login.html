@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
+</head>
+
+<body>
+    <div class="container" id="container">
+
+        <!--Sign Up Form-->
+        <div class="form-container sign-up-container">
+            <form onsubmit="event.preventDefault(); register();">
+                <h1>Create Account</h1>
+                <span>Use your email for registration</span>
+                <input type="text" id="reg-email" placeholder="Email" required />
+                <div class="password-wrapper">
+                    <input type="password" id="reg-password" placeholder="Password" required />
+                    <span class="toggle-password" onclick="togglePassword('reg-password',this)">👁️</span>
+                    <small id="reg-caps-msg" class="caps-msg">⚠️Caps Lock is ON</small>
+                </div>
+                <div id="reg-password-rules" class="password-rules">
+                    <p><span id="reg-password-strength">Weak</span></p>
+                    <ul>
+                        <li id="length-rule">❌At least 8 characters</li>
+                        <li id="email-rule">✅Cannot contain email</li>
+                        <li id="number-rule">❌At least 1 number or digit</li>
+                        <li id="symbol-rule">❌At least 1 special characters (!$&^*$@%)</li>
+                    </ul>
+                </div>
+                <button type="submit" id="signup-btn">Sign Up</button>
+            </form>
+        </div>
+
+        <!--Sign In Form-->
+        <div class="form-container sign-in-container">
+            <form onsubmit="event.preventDefault(); login();">
+                <h1>Sign In</h1>
+                <input type="text" id="login-email" placeholder="Email" required />
+                <div class="password-wrapper">
+                    <input type="password" id="login-password" placeholder="Password" required />
+                    <span class="toggle-password" onclick="togglePassword('login-password',this)">👁️</span>
+                    <small id="login-caps-msg" class="caps-msg">⚠️Caps Lock is ON</small>
+                </div>
+                <button>Sign In</button>
+            </form>
+        </div>
+
+        <!--Overlay-->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us, please login</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend</h1>
+                    <p>Enter your details and start your journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static',filename='script.js')}}"></script>
+</body>
+
+</html>
